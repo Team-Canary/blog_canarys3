@@ -1,0 +1,113 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="pt-br">
+    <meta charset="UTF-8">
+        <title>Canary blog{% block head_title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}" />
+</head>
+<body>
+<div id="header">
+    <div id="header-content">
+         <div id="logo">
+             <a href="/blog">
+                 <img src="{% static 'images/logo.png' %}"/>
+             </a>
+        </div>
+
+        <div class="navigation">
+            <ul class="menu">
+                <li>
+                    <a href="/blog">
+                       Home
+                    </a>
+                </li>
+                 <li>
+                    <a href="/blog/pagina/equipe">
+                        Equipe
+                    </a>
+                </li>
+                 <li>
+                    <a href="/blog/pagina/a-sprint">
+                        A Sprint
+                    </a>
+                </li>
+                <li>
+                    <a href="/blog/pagina/a-disciplina">
+                       A disciplina
+                    </a>
+                </li>
+
+            </ul>
+            <span class="icons">
+                <a href="https://github.com/Team-Canary/" target="_blank">
+                    <i class="fa fa-github fa-2x"></i>
+                </a>
+            </span>
+		</div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="content">
+
+         {% block content %}{% endblock %}
+    </div>
+    <div id="sidebar">
+
+     <div class="container sidebar-container">
+          <form action="/blog/resultado/">
+              <input type="text" name="resultado" class="input-search">
+              <input type="submit" class="button-search" value="Buscar">
+          </form>
+
+        </div>
+
+     <div class="container sidebar-container">
+        <h2>Categorias</h2>
+            {% for categoria in categorias %}
+            <ul class="categorias-list">
+                <li>
+                    <a href="categoria/{{ categoria.id }}">
+                        {{ categoria }}
+                    </a>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+
+     <div class="container sidebar-container">
+        <h2>Nuvem de tags</h2>
+         <div class="body-sidebar">
+              {% for tag in tags %}
+                <a href="tag/{{ tag.slug }}">
+                    {{ tag }}
+                </a>
+                {% endfor %}
+         </div>
+
+        </div>
+
+        <div class="container sidebar-container">
+            <h2>Posts recentes</h2>
+                {% for post in posts_recentes %}
+                <ul class="list">
+                    <li>
+                        <a href="/blog/{{  post.id }}">
+                            {{  post }}
+                        </a>
+                    </li>
+                </ul>
+             {% endfor %}
+        </div>
+    </div>
+
+</div>
+<footer class="footer">
+    Canary - 2014
+</footer>
+
+</body>

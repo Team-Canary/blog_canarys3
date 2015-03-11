@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+
+{%  block content %}
+
+
+    <div class="pagina">
+     <div class="entry-content">
+        <img src="{{ pagina.imagemDestacada.url }}" class="imagemDestacada"/>
+
+        <h2 class="title">
+            <a href="/blog/pagina/{{ pagina.slug }}">{{ pagina.titulo }}</a>
+        </h2>
+
+        <span class="post-meta">criado em {{ pagina.criado_em }}</span>
+
+        <div class="pagina-body">
+            {{ pagina.corpo | safe | linebreaks }}
+        </div>
+     </div>
+     </div>
+
+
+{% endblock %}
