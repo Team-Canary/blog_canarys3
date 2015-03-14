@@ -1,12 +1,11 @@
 {% extends "blog/base.html" %}
-{% load staticfiles %}
 
 {%  block content %}
 
 
     <div class="pagina">
      <div class="entry-content">
-        <img src="{{ pagina.imagemDestacada.url }}" class="imagemDestacada"/>
+        <!--  <img src="{{ post.imagemDestacada.url }}" class="imagemDestacada"/> !-->
 
         <h2 class="title">
             <a href="/blog/pagina/{{ pagina.slug }}">{{ pagina.titulo }}</a>

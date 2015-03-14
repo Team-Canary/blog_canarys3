@@ -1,10 +1,9 @@
 {% extends "blog/base.html" %}
 {% load staticfiles %}
-{% block head_title %} - Categorias: {{ categoria }}{% endblock %}
 
 {%  block content %}
-    <h4 class="sub-titulo">Categoria: <b>{{ categoria }}</b></h4>
-    {% for post in posts %}
+
+
     <div class="post">
      <div class="entry-content">
         <img src="{{ post.imagemDestacada.url }}" class="imagemDestacada"/>
@@ -21,7 +20,7 @@
      </div>
         <div class="categorias">
             {% for categoria in post.categoria.all %}
-                <a href="/blog/categorias/{{ categoria }}">{{ categoria }}</a>
+                <a href="/blog/categoria/{{ categoria.id }}">{{ categoria }}</a>
                 {% if not forloop.last %}, {% endif %}
             {% endfor %}
         </div>
@@ -32,6 +31,4 @@
             {% endfor %}
         </div>
      </div>
-    {% endfor %}
-
 {% endblock %}

@@ -17,7 +17,7 @@ class Post(models.Model):
     criado_em = models.DateTimeField()
     tags = TaggableManager()
     categoria = models.ManyToManyField('blog.Categoria')
-    imagemDestacada = models.ImageField()
+   # imagemDestacada = models.ImageField()
     slug = models.SlugField(max_length=100, blank=True)
 
     def __unicode__(self):
@@ -28,7 +28,6 @@ class Pagina(models.Model):
     titulo = models.CharField(max_length=100)
     corpo = models.TextField()
     criado_em = models.DateTimeField()
-    tags = TaggableManager()
 
     def __unicode__(self):
         return self.titulo

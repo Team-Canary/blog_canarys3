@@ -1,7 +1,6 @@
 {% extends "blog/base.html" %}
 
 {%  block content %}
-
     {% for post in object_list %}
         <p>{{ post.criado_em }} <a href="/blog/{{ post.id }}">{{ post.titulo }}</a></p>
     {% endfor %}

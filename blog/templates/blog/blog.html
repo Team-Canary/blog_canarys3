@@ -1,12 +1,11 @@
 {% extends "blog/base.html" %}
-{% load staticfiles %}
 
 {%  block content %}
 
-
+    {% for post in object_list %}
     <div class="post">
      <div class="entry-content">
-        <img src="{{ post.imagemDestacada.url }}" class="imagemDestacada"/>
+      <!--  <img src="{{ post.imagemDestacada.url }}" class="imagemDestacada"/> !-->
 
         <h2 class="title">
             <a href="/blog/{{ post.id }}">{{ post.titulo }}</a>
@@ -20,7 +19,7 @@
      </div>
         <div class="categorias">
             {% for categoria in post.categoria.all %}
-                <a href="/blog/categorias/{{ categoria }}">{{ categoria }}</a>
+                <a href="/blog/categoria/{{ categoria.id }}">{{ categoria }}</a>
                 {% if not forloop.last %}, {% endif %}
             {% endfor %}
         </div>
@@ -31,4 +30,6 @@
             {% endfor %}
         </div>
      </div>
+
+    {% endfor %}
 {% endblock %}

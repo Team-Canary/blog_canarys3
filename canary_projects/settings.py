@@ -3,13 +3,18 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 
 """
-Django settings for blog_canarys3 project.
+Django settings for canarys_projects project.
 
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
 
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
+##### Dependencias dos projetos ######
+
+# dependencias do app blog
+
+## modulo com suporte a tags, utilizado paar criação do campo de tags no blog
+pip install django-taggit
+
+##
+
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -30,8 +35,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
+# Definie quais aplicações do projeto serão ativadas
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -42,22 +46,24 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'taggit',
+    'pagination',
     'blog',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
-ROOT_URLCONF = 'blog_canarys3.urls'
+#define qual o arquivo será o arquivo padrão de configuração dos padroes de url
+ROOT_URLCONF = 'canary_projects.urls'
 
-WSGI_APPLICATION = 'blog_canarys3.wsgi.application'
+WSGI_APPLICATION = 'canary_projects.wsgi.application'
 
 SITE_ID = 1
 
@@ -66,12 +72,12 @@ SITE_ID = 1
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.canary_projects'),
+       # 'USER': 'root',
+       # 'PASSWORD': '',
+       # 'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+       # 'PORT': '3306',
     }
 }
 
@@ -90,7 +96,7 @@ USE_TZ = True
 
 
 
-MEDIA_ROOT= os.path.join(BASE_DIR, "media")
+MEDIA_ROOT= os.path.join(BASE_DIR, "blog/media")
 MEDIA_URL='/media/'
 
 STATIC_URL = '/static/'
@@ -103,21 +109,31 @@ css, js e imagens que compoem o layout
 """
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "blog/static"),
     '/var/www/static/',
 )
 
 """
 TEMPLATE_DIRS
-essa variavel define o caminho paar a pasta templates, pasta
+essa variavel define o caminho paar a pasta blog, pasta
 utilizadas para armazenar os arquivos html do site
 """
+
+#define a fonte de onde os templatesserão carregados
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader', #pasta templates do projeto (/templates)
+    'django.template.loaders.app_directories.Loader', #pasta templates do app (/app/templates)
+)
+
+#define o caminho das pastas onde seão carregados os templates
 TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'blog/templates'),
     os.path.join(BASE_DIR,  'templates'),
 )
 
 
 from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-    "blog_canarys3.context_processors.global_vars",
+    "blog.context_processors.global_vars",
 )
+

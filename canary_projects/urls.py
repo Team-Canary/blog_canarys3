@@ -10,6 +10,5 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'blog_canarys3.views.home', name='home'),
     url(r'^blog/', include('blog.urls')),
-
     url(r'^blog/admin/', include(admin.site.urls)),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
