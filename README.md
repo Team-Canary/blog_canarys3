@@ -1,6 +1,6 @@
 # blog_canarys3
-Blog - Django app
-A simple Django app to deal with contacts.
+Blog - Ferramenta utilizada para publicação de informações.
+Um simples blog utilizando framework django.
 
 Página oficial do time Canary (CNRY).
 
@@ -12,7 +12,7 @@ Sobre o projeto:
 
 Desenvolvido em python (v. 1.5), usando o framework Django (v. 2.7).
 
-Projeto de armazenamento e consulta de contatos.
+Projeto de armazenamento e atualização de informações
 
 Projeto desenvolvido na turma 2015.1 de Engenharia de Software do curso de Sistemas de Informacao do Instituto Federal de Educação, Ciência e Tecnologia da Bahia (IFBA) - campus Vitória da Conquista.
 
