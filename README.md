@@ -1,4 +1,4 @@
-          # Blog_canarys3
+# Blog_canarys3
 Blog - Ferramenta utilizada para publicação de informações.
 Um simples blog utilizando framework django.
 
