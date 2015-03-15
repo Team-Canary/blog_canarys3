@@ -1,5 +1,5 @@
 # blog_canarys3
-Angenda de Contatos - Django app
+Blog - Django app
 A simple Django app to deal with contacts.
 
 Página oficial do time Canary (CNRY).
